@@ -3,7 +3,7 @@
 LIB = dfftpack
 
 FC = gfortran
-FFLAGS = -O2
+FFLAGS = -O2 -fPIC
 
 export LIB
 export FC

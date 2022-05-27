@@ -65,11 +65,13 @@ SRCF90 = \
 OBJF := $(SRCF:.f90=.o)
 OBJF90 := $(SRCF90:.f90=.o)
 
+all: lib$(LIB).a lib$(LIB).so
+
 lib$(LIB).a: $(OBJF) $(OBJF90)
 	ar -rcs lib$(LIB).a $(OBJF) $(OBJF90)
 
-shared: $(OBJ)
-	$(FC) -shared -o lib$(LIB).so $(OBJ)
+lib$(LIB).so: $(OBJF) $(OBJF90)
+	$(FC) -shared -o lib$(LIB).so $(OBJF) $(OBJF90)
 
 clean:
 	rm -f -r *.o *.a *.so *.mod *.smod
